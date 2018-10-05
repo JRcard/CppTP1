@@ -93,8 +93,6 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
-    <File Name="joblow.cpp"/>
-    <File Name="joblow.h"/>
     <File Name="MesFichiers.cpp"/>
     <File Name="MesFichiers.h"/>
     <File Name="MesOptions.cpp"/>

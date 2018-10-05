@@ -10,7 +10,7 @@ using namespace std;
 MesOptions :: MesOptions(){}
 
 int main(int argc, char* argv[])
-{	
+{
 
 	MesOptions options;
 	options.setOpt(argc, argv);

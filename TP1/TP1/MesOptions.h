@@ -19,7 +19,6 @@ private:
 	string rFlg = "Null";
 	string sFlg = "Null";
 	bool goodOpt = false;
-
 	
 
 public:

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <getopt.h>
 #include "MesFichiers.h"
+#include "MonMenu.h"
 
 using namespace std;
 
@@ -20,7 +21,6 @@ private:
 	string sFlg = "Null";
 	bool goodOpt = false;
 	
-
 public:
 	MesOptions();
 	
@@ -64,35 +64,42 @@ public:
 		if (dFlg == "Null" && rFlg =="Null")
 		{
 			cout << "Ce programme ne peut pas s’exécuter. Les options « -d » et « -r » sont manquantes.\n";
-			cout << "tp1.exe -d resultatspar partipolitque (obligatoire) -r resultatglobal (obligatoire) -s fichierdesortie (optionnelle)" << endl;
+			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 		}
 		
 		else if (dFlg == "Null") 
 		{
 			cout << "Ce programme ne peut pas s’exécuter. L'options « -d » est manquante.\n";
-			cout << "tp1.exe -d resultatspar partipolitque (obligatoire) -r resultatglobal (obligatoire) -s fichierdesortie (optionnelle)" << endl;
+			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 		}
 		else if (rFlg == "Null")
 		{
 			cout << "Ce programme ne peut pas s’exécuter. L'options « -r » est manquante.\n";
-			cout << "tp1.exe -d resultatspar partipolitque (obligatoire) -r resultatglobal (obligatoire) -s fichierdesortie (optionnelle)" << endl;		
+			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;		
 		}
 		else if (error != 0)
-			cout << "tp1.exe -d resultatspar partipolitque (obligatoire) -r resultatglobal (obligatoire) -s fichierdesortie (optionnelle)" << endl;
+			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 			
 		if (dFlg != "Null" && rFlg !="Null")
 		{ 	
 			cout << "dFlg = " << dFlg << ", rFlg = " << rFlg << ", sFlg = " << sFlg << endl;
 			cout << endl;
-			cout << "(1) afficher le sommaire des résultats.\n";
-			cout << "(2) afficher tous les résultats.\n";
-			cout << "(3) afficher les résultats détaillés du parti qui a gagné plus de sièges à l’assemblée.\n";
-			cout << "(4) afficher les résultats détaillés d’un parti politique en particulier.\n";
-			cout << "(5) afficher les résultats des parties qui ont obtenu au moins un siège à l’assemblée.\n";
-			cout << "(6) quitter le programme." << endl;
-			this->goodOpt = true;
+
+			MonMenu menu;
+			MesFichiers fichiers(dFlg, rFlg);
+			cout << "erreur de fichier: " << fichiers.getError() << endl;
+			cout << endl;
+			
+			if (fichiers.ok())
+			{
+				cout << menu;
+				menu.menuOpt();
+				this->goodOpt = true;
+			}
+
 		}
 	}
+
 	
 /* getters */
 	bool getStatus()

@@ -82,21 +82,9 @@ public:
 			
 		if (dFlg != "Null" && rFlg !="Null")
 		{ 	
-			cout << "dFlg = " << dFlg << ", rFlg = " << rFlg << ", sFlg = " << sFlg << endl;
-			cout << endl;
-
-			MonMenu menu;
-			MesFichiers fichiers(dFlg, rFlg);
-			cout << "erreur de fichier: " << fichiers.getError() << endl;
-			cout << endl;
-			
-			if (fichiers.ok())
-			{
-				cout << menu;
-				menu.menuOpt();
-				this->goodOpt = true;
-			}
-
+/*			cout << "dFlg = " << dFlg << ", rFlg = " << rFlg << ", sFlg = " << sFlg << endl;
+			cout << endl;*/
+			this->goodOpt = true;
 		}
 	}
 

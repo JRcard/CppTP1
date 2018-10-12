@@ -8,26 +8,28 @@
 using namespace std;
 
 MesOptions :: MesOptions(){}
-MonMenu :: MonMenu(){}
 
 int main(int argc, char* argv[])
 {
 	MonMenu menu;
 	MesOptions options;
+
 	options.setOpt(argc, argv);
 	cout << "erreur d'option: " << options.getError() << endl;
-	
-/*	if (options.getStatus())
+
+	if (options.getStatus())
 	{
 		MesFichiers fichiers(options.getdFlg(), options.getrFlg());
-		cout << "erreur de fichier: " << fichiers.getError() << endl;
-		
+
 		if (fichiers.ok())
 		{
 			cout << menu;
+			
+			fichiers.affiche(menu.menuOpt());
 		}
+		
+		else cout << "erreur de fichier: " << fichiers.getError() << endl;
 	}
-*/
 
 	return 0;
 }

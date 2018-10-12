@@ -13,6 +13,8 @@ class MesFichiers
 	ifstream fIndiv, fGlobal;
 	
 public:
+	MesFichiers(){};
+	
 	MesFichiers(string indiv, string global)
 	{	
 
@@ -41,6 +43,11 @@ public:
 	int getError()
 	{
 		return this->error;
+	}
+
+	void affiche(char sel)
+	{
+		cout << "mesfichiers\n";
 	}
 };
 

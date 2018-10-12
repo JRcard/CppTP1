@@ -7,24 +7,42 @@ using namespace std;
 
 class MonMenu
 {
-
+	char option;
+	
 public:
-	MonMenu();
+	MonMenu(){};
 	
 	friend ostream& operator << (ostream&, const MonMenu&);
 	
 	void menuOpt()
-	{ cout << "opt selectionne ## " << endl;
-/*		while ((this->option = cin.get() != EOF) 
+	{ 
+		while ((this->option = cin.get()) != EOF) 
+		{
 			switch (this->option)
 			{
 				case '1':
-					fichiers = fichiers.getGlobal();
-					while (!fichiers.eof())
-						fichiers >> entree;
-						cout << fichier;
-				
-			}*/
+					cout << "Opt -1- selectionnée.\n" << endl;
+					break;
+				case '2':
+					cout << "Opt -2- selectionnée.\n" << endl;
+					break;
+				case '3':
+					cout << "Opt -3- selectionnée.\n" << endl;
+					break;
+				case '4':
+					cout << "Opt -4- selectionnée.\n" << endl;
+					break;
+				case '5':
+					cout << "Opt -5- selectionnée.\n" << endl;
+					break;
+				case '6':
+					cout << "Opt -6- selectionnée.\n Merci d'avoir utilisé ce programme, à la prochaine!\n" << endl;
+					break;
+				default:
+					cout << " est une option incorrecte. Recommencez\n";
+					break;
+			}
+		}
 	}
 };
 

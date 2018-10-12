@@ -9,6 +9,18 @@ using namespace std;
 
 MesOptions :: MesOptions(){}
 
+/*void global(const char nomALire[], LesParties parties[])
+{   
+	ifstream  aLire (nomALire, ios::in); // localiser et ouvrir pour la lecture
+	
+	n = 0;				
+	while (aLire != EOF)			       
+	{                                
+		parties[n++] = LesParties();               
+	}
+	aLire.close();   
+}*/
+
 int main(int argc, char* argv[])
 {
 	MonMenu menu;

@@ -24,8 +24,6 @@ int main(int argc, char* argv[])
 		if (fichiers.ok())
 		{
 			cout << menu;
-			
-			fichiers.affiche(menu.menuOpt());
 		}
 		
 		else cout << "erreur de fichier: " << fichiers.getError() << endl;

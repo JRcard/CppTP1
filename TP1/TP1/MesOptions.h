@@ -22,41 +22,41 @@ private:
 	bool goodOpt = false;
 	
 public:
-	MesOptions();
+	MesOptions(){};
 	
 	void setOpt(int argc, char* argv[])
 	{
 		if (argc == 1)
 		{
-			this->error++;
+			error++;
 		}
 		
 		else
 		{
-			while ((this->getIn = getopt(argc, argv, "d:r:s:?")) != EOF) 
+			while ((getIn = getopt(argc, argv, "d:r:s:?")) != EOF) 
 			{	
-			switch (this->getIn) 
+			switch (getIn) 
 				{
 				case 'd':
-					this->dFlg = optarg;
+					dFlg = optarg;
 					break;
 					
 				case 'r':
-					this->rFlg = optarg;
+					rFlg = optarg;
 					break;
 					
 				case 's':
-					this->sFlg = optarg;
+					sFlg = optarg;
 					break;
 					
 				case '?':
-					this->error++;
+					error++;
 					break;
 				}
 			}
 		}
 		
-		optCheck(this->dFlg, this->rFlg, this->sFlg, this->error);
+		optCheck(dFlg, rFlg, sFlg, error);
 	}
 	
 	void optCheck(string dFlg, string rFlg, string sFlg, int error)
@@ -84,7 +84,7 @@ public:
 		{ 	
 /*			cout << "dFlg = " << dFlg << ", rFlg = " << rFlg << ", sFlg = " << sFlg << endl;
 			cout << endl;*/
-			this->goodOpt = true;
+			goodOpt = true;
 		}
 	}
 
@@ -92,27 +92,27 @@ public:
 /* getters */
 	bool getStatus()
 	{
-		return this->goodOpt;
+		return goodOpt;
 	}
 		
 	string getdFlg()
 	{
-		return this->dFlg;
+		return dFlg;
 	}
 		
 	string getrFlg()
 	{
-		return this->rFlg;
+		return rFlg;
 	}
 	
 	string getsFlg()
 	{
-		return this->sFlg;
+		return sFlg;
 	}
 	
 	int getError()
 	{
-		return this->error;
+		return error;
 	}
 	
 	~MesOptions()

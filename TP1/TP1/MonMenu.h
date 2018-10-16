@@ -1,6 +1,7 @@
 #ifndef MONMENU_H
 #define MONMENU_H
 
+#include <iomanip>
 #include "MesFichiers.h"
 
 using namespace std;
@@ -9,6 +10,7 @@ class MonMenu
 {
 	char option;
 	
+	
 public:
 	MonMenu(){};
 	
@@ -16,9 +18,9 @@ public:
 	
 	void menuOpt()
 	{ 
-		while ((this->option = cin.get()) != EOF) 
+		while ((option = cin.get()) != EOF) 
 		{
-			switch (this->option)
+			switch (option)
 			{
 				case '1':
 					cout << "Opt -1- selectionnée.\n" << endl;
@@ -48,14 +50,14 @@ public:
 
 ostream& operator << (ostream& sortie, const MonMenu &menu)
 {
-   sortie	<< "Faites un choix: \n"
+	sortie	<< "Faites un choix: \n"
 			<< "(1) afficher le sommaire des résultats.\n"
 			<< "(2) afficher tous les résultats.\n"
 			<< "(3) afficher les résultats détaillés du parti qui a gagné plus de sièges à l’assemblée.\n"
 			<< "(4) afficher les résultats détaillés d’un parti politique en particulier.\n"
 			<< "(5) afficher les résultats des parties qui ont obtenu au moins un siège à l’assemblée.\n"
 			<< "(6) quitter le programme.\n" << endl;
-   return sortie;       
+	return sortie;       
 }
 
 #endif // MONMENU_H

@@ -16,9 +16,11 @@ private:
 
 	int error = 0;
 	int getIn;
-	string dFlg = "Null";
-	string rFlg = "Null";
-	string sFlg = "Null";
+	int dFlg = 0;
+	int rFlg = 0;
+	int sFlg = 0;
+	string dVal, rVal, sVal;
+
 	bool goodOpt = false;
 	
 public:
@@ -38,15 +40,18 @@ public:
 			switch (getIn) 
 				{
 				case 'd':
-					dFlg = optarg;
+					dVal = optarg;
+					dFlg = 1;
 					break;
 					
 				case 'r':
-					rFlg = optarg;
+					rVal = optarg;
+					rFlg = 1;
 					break;
 					
 				case 's':
-					sFlg = optarg;
+				sVal = optarg;
+					sFlg = 1;
 					break;
 					
 				case '?':
@@ -59,20 +64,20 @@ public:
 		optCheck(dFlg, rFlg, sFlg, error);
 	}
 	
-	void optCheck(string dFlg, string rFlg, string sFlg, int error)
+	void optCheck(int dFlg, int rFlg, int  sFlg, int error)
 	{
-		if (dFlg == "Null" && rFlg =="Null")
+		if (dFlg == 0 && rFlg == 0)
 		{
 			cout << "Ce programme ne peut pas s’exécuter. Les options « -d » et « -r » sont manquantes.\n";
 			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 		}
 		
-		else if (dFlg == "Null") 
+		else if (dFlg == 0) 
 		{
 			cout << "Ce programme ne peut pas s’exécuter. L'options « -d » est manquante.\n";
 			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 		}
-		else if (rFlg == "Null")
+		else if (rFlg == 0)
 		{
 			cout << "Ce programme ne peut pas s’exécuter. L'options « -r » est manquante.\n";
 			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;		
@@ -80,7 +85,7 @@ public:
 		else if (error != 0)
 			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 			
-		if (dFlg != "Null" && rFlg !="Null")
+		if (dFlg == 1 && rFlg == 1)
 		{ 	
 /*			cout << "dFlg = " << dFlg << ", rFlg = " << rFlg << ", sFlg = " << sFlg << endl;
 			cout << endl;*/
@@ -95,19 +100,19 @@ public:
 		return goodOpt;
 	}
 		
-	string getdFlg()
+	string getdVal()
 	{
-		return dFlg;
+		return dVal;
 	}
 		
-	string getrFlg()
+	string getrVal()
 	{
-		return rFlg;
+		return rVal;
 	}
 	
-	string getsFlg()
+	string getsVal()
 	{
-		return sFlg;
+		return sVal;
 	}
 	
 	int getError()

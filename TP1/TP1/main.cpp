@@ -1,7 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
+#include <fstream>
+#include <sstream>
 #include <getopt.h>
 #include <iomanip>
+#include <string>
 #include "MesOptions.h"
 #include "MesFichiers.h"
 #include "MonMenu.h"
@@ -33,14 +36,16 @@ bool ok(string indiv, string global)
 	fGlobal.close();
 }
 	
-void lireRemplir(const char nomALire[], LesParties parties[], int & n)
+void lireRemplir(const string& fichier, LesParties parties[], int & n)
 {   
-	int no, nbVote, nbCandi, nbElu;
-	float tauxVote;
-	string nom, abrv;
-	char lu[200];
+	string nbVote, nbCandi, nbElu;
+	string tauxVote;
+	string no, nom, abrv;
+	string lu;
 	
-	ifstream  aLire (nomALire, ios::in); // localiser et ouvrir pour la lecture
+	//istringstream aLire (fichier);
+	
+	ifstream  aLire (fichier, ios::in); // localiser et ouvrir pour la lecture
 	
 	n = 0;
 // test 1
@@ -53,13 +58,25 @@ void lireRemplir(const char nomALire[], LesParties parties[], int & n)
 
 	
 // test 2
-	while (getline(aLire, lu, '\n'))
+	while (!aLire.eof())
 	{
-		cout << lu << endl;
-		parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);               
+		getline(aLire, no, ',');
+		getline(aLire, nom, ',');
+		getline(aLire, abrv, ',');
+		getline(aLire, nbVote, ',');
+		getline(aLire, tauxVote, ',');
+		getline(aLire, nbCandi, ',');
+		getline(aLire, nbElu, '\n');
+		cout << n++ << " TEST!!! " << "NO: " << no << " Nom: "<< nom << endl;
+/*		
+		no = get(lu, 2, ',');*/
+		
+/*		no = get(lu, 2, ',');
+		
+		parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);*/    
 	}
 	// fin du test 2.
-	aLire.close();   
+	//aLire.close();   
 }
 
 int main(int argc, char* argv[])
@@ -78,10 +95,10 @@ int main(int argc, char* argv[])
 	{
 		/*fichiers(options.getdFlg(), options.getrFlg());*/
 
-		if (ok(options.getdFlg(), options.getrFlg()))
+		if (ok(options.getdVal(), options.getrVal()))
 		{
 			// lire fichier et remplir tab de partie
-			lireRemplir(options.getdFlg(), partie, nbPartie);
+			lireRemplir(options.getdVal(), partie, nbPartie);
 			// lire fichier global et attendre l'appel
 			cout << menu;
 			//menu.menuOpt();

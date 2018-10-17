@@ -33,11 +33,12 @@ bool ok(string indiv, string global)
 	fGlobal.close();
 }
 	
-void lireRemplir(string nomALire, LesParties parties[], int & n)
+void lireRemplir(const char nomALire[], LesParties parties[], int & n)
 {   
 	int no, nbVote, nbCandi, nbElu;
 	float tauxVote;
-	string nom, abrv, lu;
+	string nom, abrv;
+	char lu[200];
 	
 	ifstream  aLire (nomALire, ios::in); // localiser et ouvrir pour la lecture
 	
@@ -50,19 +51,11 @@ void lireRemplir(string nomALire, LesParties parties[], int & n)
 	
 // fin du test 1
 
-	string ligneLue;
 	
 // test 2
-	while (getline(aLire, ligneLue, '\n'))
+	while (getline(aLire, lu, '\n'))
 	{
-        no = ligneLue[1];
-		nom = ligneLue.substr(2,62);	
-		abrv  = ligneLue.substr(63,83);	
-		nbVote = atoi(ligneLue.substr(84,94).c_str()); // conversion de la chaine de caractere en nombre entier
-		tauxVote = atof(ligneLue.substr(95, 107).c_str()); 
-		nbCandi = atoi(ligneLue.substr(108, 123).c_str()); 
-		nbElu = atoi(ligneLue.substr(124).c_str());
-		
+		cout << lu << endl;
 		parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);               
 	}
 	// fin du test 2.

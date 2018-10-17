@@ -67,21 +67,26 @@ void lireRemplir(const string& fichier, LesParties parties[], int & n)
 		getline(aLire, tauxVote, ',');
 		getline(aLire, nbCandi, ',');
 		getline(aLire, nbElu, '\n');
-		cout << n++ << " TEST!!! " << "NO: " << no << " Nom: "<< nom << endl;
-/*		
-		no = get(lu, 2, ',');*/
 		
-/*		no = get(lu, 2, ',');
-		
-		parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);*/    
+
+		if(n == 0)
+		{
+			n++;
+		}
+		else 
+		{
+			//cout << n++ << " TEST!!! " << "NO: " << no << " Nom: "<< nom << endl;
+			parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu); 
+		}
+		//parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);  
 	}
 	// fin du test 2.
-	//aLire.close();   
+	aLire.close();   
 }
 
 int main(int argc, char* argv[])
 {
-	const int MAX_PARTIES = 20 ;
+	const int MAX_PARTIES = 25 ;
 	int nbPartie;
 	MonMenu menu;
 	MesOptions options;
@@ -103,7 +108,8 @@ int main(int argc, char* argv[])
 			cout << menu;
 			//menu.menuOpt();
 			cout << "Nb de partie: " << nbPartie << endl;
-			partie[2].affiche();
+			cout << partie[2];
+			cout << partie[3];
 		}
 		
 		else cout << "erreur de fichier: " << fichiers.getError() << endl;

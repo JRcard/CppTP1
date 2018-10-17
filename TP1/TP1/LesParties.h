@@ -7,14 +7,14 @@ using namespace std;
 
 class LesParties
 {
-	int no, nbVote, nbCandi, nbElu;
-	float tauxVote;
+	string no, nbVote, nbCandi, nbElu;
+	string tauxVote;
 	string nom, abrv;
 	
 public:
 	LesParties(){};
 	
-	LesParties(int no, string nom, string abrv, int nbVote, float tauxVote, int nbCandi, int nbElu)
+	LesParties(string no, string nom, string abrv, string nbVote, string tauxVote, string nbCandi, string nbElu)
 	{
 		this->no = no;
 		this->nom = nom;
@@ -39,7 +39,7 @@ public:
 			"NbreCandidats" << setw(20) <<
 			"NbreCandidatselus" << setw(20) << endl;
 		cout << setw(165) << setfill('-') << '-' << endl;
-		cout << no << nom << endl;
+
 	}
 };
 
@@ -48,14 +48,14 @@ ostream& operator << (ostream& sortie, const LesParties &parties)
 	sortie.setf(ios::fixed);
 	sortie.setf(ios::showpoint);
 	
-	sortie << "No" << setw(6) << "Nom" << 
-			setw(6) << "Abrevition" << 
-			setw(7) << "NbeVotes" << 
-			setw(10) << "TauxdeVote" <<
-			setw(12) << "NbreCandidats" <<
-			setw(12) << "NbreCandidatselus" << endl;
-	sortie << setw(139) << setfill('-') << endl;
-	sortie << parties.no << parties.abrv << endl;
+/*	sortie << "No" << setw(8) << "Nom" << setw(69) << 
+			"Abreviation" << setw(22) <<
+			"NbreVotes" << setw(17) << 
+			"TauxdeVote" << setw(18) << 
+			"NbreCandidats" << setw(20) <<
+			"NbreCandidatselus" << setw(20) << endl;
+	sortie << setw(165) << setfill('-') << '-' << endl;*/
+	sortie << setw(2) << left << parties.no << setw(60) << left << parties.nom << endl;
 	
 	return sortie;
 }

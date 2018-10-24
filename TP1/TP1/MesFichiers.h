@@ -27,7 +27,7 @@ class Global
 ostream& operator << (ostream& sortie, const Global& s)
 {
 	sortie << left << s.total << ":" << 
-			  setw(45) << left << s.nb;
+			  setw(45) << left << s.nb << endl;
 	
 	return sortie;
 }
@@ -88,7 +88,7 @@ public:
 		string tauxVote;
 		string no, nom, abrv;
 		string lu;
-		n = 0;
+		n = -1;
 		
 		ifstream  fIndiv (fichier); // localiser et ouvrir pour la lecture
 
@@ -102,7 +102,7 @@ public:
 			getline(fIndiv, nbCandi, ',');
 			getline(fIndiv, nbElu, '\n');
 
-			if(n == 0)
+			if(n == -1)
 			{
 				n++;
 			}

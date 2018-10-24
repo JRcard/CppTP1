@@ -7,9 +7,10 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	const int MAX_PARTIES = 25 ;
+	const int MAX_PARTIES = 20 ;
 	int nbPartie;
 	int nbGlobal;
+	char option = '0';
 	
 	MesOptions options;
 	MesFichiers fichiers;
@@ -42,33 +43,42 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
+				int p=100;
 				cout << menu;
-				while ((option = cin.get()) != EOF) 
-				{
+				while (option != '6') 
+				{	
+					cin >> option;
 					switch (option)
 					{
 						case '1':
-							menu.opt1();
+							menu.opt1(global, nbGlobal);
 							break;
 						case '2':
-							menu.opt2();
+							menu.opt2(partie, nbPartie);
 							break;
 						case '3':
-							menu.opt3();
+							menu.opt3(partie, nbPartie);
 							break;
 						case '4':
-							menu.opt4();
+							menu.opt4(partie, nbPartie);
+							while(p == 100)
+							{
+								p = (int) cin.get();
+								partie[0].enTete();
+								cout << partie[p];
+							}
 							break;
 						case '5':
-							menu.opt5();
+							menu.opt5(partie, nbPartie);
 							break;
 						case '6':
-							menu.opt6();
 							break;
 						default:
 							cerr << option << " est une option incorrecte. Recommencez\n";
 					}
 				}
+				
+				cout << "Opt -6- selectionnée.\nMerci d'avoir utilisé ce programme, à la prochaine!\n" << endl;
 			}
 	/*
 			partie[0].enTete();

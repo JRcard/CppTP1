@@ -2,6 +2,7 @@
 #define LESPARTIES_H
 
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -39,6 +40,16 @@ public:
 		cout << setw(165) << setfill('-') << '-' << endl;
 		cout << setfill(' ');
 	}
+	
+	string getNbElu()
+	{
+		return nbElu;
+	}
+	string getNom()
+	{
+		return nom;
+	}
+
 };
 
 ostream& operator << (ostream& sortie, const LesParties &parties)

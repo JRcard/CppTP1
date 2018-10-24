@@ -1,3 +1,5 @@
+#include <fstream>
+#include <iostream>
 #include "MesOptions.h"
 #include "MesFichiers.h"
 #include "MonMenu.h"
@@ -11,6 +13,7 @@ int main(int argc, char* argv[])
 	int nbPartie;
 	int nbGlobal;
 	char option = '0';
+	ofstream out;
 	
 	MesOptions options;
 	MesFichiers fichiers;
@@ -38,55 +41,49 @@ int main(int argc, char* argv[])
 			// sinon l'affichage se fera de façon standard.
 			if(options.getsFlg() == 1)
 			{
-/*				fichiers.sortie(options.getsVal());*/
+				out.open(options.getsVal());
+				streambuf* streamBufferFile = out.rdbuf();
+				cout.rdbuf(streamBufferFile);
 				cout << "opt en construction!!" << endl;
 			}
-			else
-			{
-				int p=100;
-				cout << menu;
-				while (option != '6') 
-				{	
-					cin >> option;
-					switch (option)
-					{
-						case '1':
-							menu.opt1(global, nbGlobal);
-							break;
-						case '2':
-							menu.opt2(partie, nbPartie);
-							break;
-						case '3':
-							menu.opt3(partie, nbPartie);
-							break;
-						case '4':
-							menu.opt4(partie, nbPartie);
-							while(p == 100)
-							{
-								p = (int) cin.get();
-								partie[0].enTete();
-								cout << partie[p];
-							}
-							break;
-						case '5':
-							menu.opt5(partie, nbPartie);
-							break;
-						case '6':
-							break;
-						default:
-							cerr << option << " est une option incorrecte. Recommencez\n";
-					}
+			int p=100;
+			cout << menu;
+			while (option != '6') 
+			{	
+				cin >> option;
+				switch (option)
+				{
+					case '1':
+						menu.opt1(global, nbGlobal);
+						break;
+					case '2':
+						menu.opt2(partie, nbPartie);
+						break;
+					case '3':
+						menu.opt3(partie, nbPartie);
+						break;
+					case '4':
+						menu.opt4(partie, nbPartie);
+						while(p == 100)
+						{
+							p = (int) cin.get();
+							partie[0].enTete();
+							cout << partie[p];
+						}
+						break;
+					case '5':
+						menu.opt5(partie, nbPartie);
+						break;
+					case '6':
+						break;
+					default:
+						cerr << option << " est une option incorrecte. Recommencez\n";
 				}
-				
-				cout << "Opt -6- selectionnée.\nMerci d'avoir utilisé ce programme, à la prochaine!\n" << endl;
 			}
-	/*
-			partie[0].enTete();
-			cout << partie[2];
-			cout << partie[3];
-			for (int i = 0; i < nbGlobal; i++)
-				cout << global[i];*/
+			cout << "Opt -6- selectionnée.\nMerci d'avoir utilisé ce programme, à la prochaine!\n" << endl;
 		}
 	}
+	if (out.is_open())
+		out.close();
 	return 0;
 }

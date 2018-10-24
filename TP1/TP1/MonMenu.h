@@ -80,7 +80,7 @@ ostream& operator << (ostream& sortie, const MonMenu &menu)
 	sortie	<< "Faites un choix: \n"
 			<< "(1) afficher le sommaire des résultats.\n"
 			<< "(2) afficher tous les résultats.\n"
-			<< "(3) afficher les résultats détaillés du parti qui a gagné plus de sièges à l’assemblée.\n"
+			<< "(3) afficher les résultats détaillés du parti qui a gagné le plus de sièges à l’assemblée.\n"
 			<< "(4) afficher les résultats détaillés d’un parti politique en particulier.\n"
 			<< "(5) afficher les résultats des parties qui ont obtenu au moins un siège à l’assemblée.\n"
 			<< "(6) quitter le programme.\n" << endl;

@@ -8,6 +8,30 @@
 
 using namespace std;
 
+class Global
+{
+	string total, nb, pourcent;
+	
+	public:
+		Global(){};
+		
+		Global(string total, string nb, string pourcent = "Null")
+		{
+			this->total = total;
+			this->nb = nb;
+			this->pourcent = pourcent;
+		}
+		
+		friend ostream& operator << (ostream&, const Global&);
+};
+ostream& operator << (ostream& sortie, const Global& s)
+{
+	sortie << left << s.total << ":" << 
+			  setw(45) << left << s.nb;
+	
+	return sortie;
+}
+
 class MesFichiers
 {	
 	
@@ -17,7 +41,7 @@ class MesFichiers
 public:
 	MesFichiers(){};
 
-	/*bool ok(string indiv, string global)
+	bool ok(string indiv, string global)
 	{	
 
 		fIndiv.open(indiv);
@@ -33,7 +57,7 @@ public:
 			cerr << "Erreur lors de la lecture du fichier : " << global << endl;
 			error++;
 		}
-	
+
 		if (error > 0) return false;
 		else return true;
 		
@@ -41,34 +65,61 @@ public:
 		fGlobal.close();
 	}
 	
-void lireRemplir(string nomALire, LesParties& p)
-{   int no, nbVote, nbCandi, nbElu;
-	float tauxVote;
-	string nom, abrv;
-	
-	ifstream  aLire (nomALire, ios::in); // localiser et ouvrir pour la lecture
-	
-	int n = 0;
-	while (aLire >> no >> nom >> abrv >> nbVote >> tauxVote >> nbCandi >> nbElu)     
-	{ 
-	string ligneLue;
-	
-// tant que getline peut lire une ligne dans le fichier aLire jusqu'au caractere de demilitation \n et la placer dans ligneLue
-// les données seront placées dans les variables qui serviront a instancifier les Nations placées ensuite dans la liste FIFO.
-	while (getline(aLire, ligneLue, '\n'))
+	void lireGlobal(const string& fichier, Global tab[], int& n)
 	{
-        no = ligneLue[1];
-		nom = ligneLue.substr(2,62);	
-		abrv  = ligneLue.substr(63,83);	
-		nbVote = atoi(ligneLue.substr(84,94).c_str()); // conversion de la chaine de caractere en nombre entier
-		tauxVote = atof(ligneLue.substr(95, 107).c_str()); 
-		nbCandi = atoi(ligneLue.substr(108, 123).c_str()); 
-		nbElu = atoi(ligneLue.substr(124).c_str());
+		string total, nb, pourcent;
+		n = 0;
 		
-		p[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);               
+		ifstream fGlobal(fichier);
+		
+		while(!fGlobal.eof())
+		{
+			getline(fGlobal, total, ',');
+			getline(fGlobal, nb, ',');
+			getline(fGlobal, pourcent, '%');
+			tab[n++] = Global(total, nb, pourcent);
+		}
+		
 	}
-	aLire.close();   
-}*/
+// lis le fichier des résultats pour chaque partie et remplis un tableau de partie.
+	void lireParties(const string& fichier, LesParties parties[], int & n)
+	{   
+		string nbVote, nbCandi, nbElu;
+		string tauxVote;
+		string no, nom, abrv;
+		string lu;
+		n = 0;
+		
+		ifstream  fIndiv (fichier); // localiser et ouvrir pour la lecture
+
+		while (!fIndiv.eof())
+		{
+			getline(fIndiv, no, ',');
+			getline(fIndiv, nom, ',');
+			getline(fIndiv, abrv, ',');
+			getline(fIndiv, nbVote, ',');
+			getline(fIndiv, tauxVote, ',');
+			getline(fIndiv, nbCandi, ',');
+			getline(fIndiv, nbElu, '\n');
+
+			if(n == 0)
+			{
+				n++;
+			}
+			else 
+			{
+				parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu); 
+			}
+		}
+		fIndiv.close();   
+	}
+// crée et ouvre un fichier de sortie selon le nom donné par l'utilisateur et sert pour la sortie des informations.
+/*	void sortie(const string& fichier)
+	{
+		ofstream out(fichier);
+		if(!fichier.is_open())
+			cerr << "Erreur lors de l’ouverture/écriture dans le fichier " << fichier << endl;
+	}
 	
 	int getError()
 	{
@@ -77,8 +128,9 @@ void lireRemplir(string nomALire, LesParties& p)
 
 	void affiche(char sel)
 	{
-		cout << "mesfichiers\n";
-	}
+		cout << "Individuel\n";
+	}*/
 };
+
 
 #endif // MESFICHIERS_H

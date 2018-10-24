@@ -68,27 +68,25 @@ public:
 	{
 		if (dFlg == 0 && rFlg == 0)
 		{
-			cout << "Ce programme ne peut pas s’exécuter. Les options « -d » et « -r » sont manquantes.\n";
-			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
+			cerr << "Ce programme ne peut pas s’exécuter. Les options « -d » et « -r » sont manquantes.\n";
+			cerr << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 		}
 		
 		else if (dFlg == 0) 
 		{
-			cout << "Ce programme ne peut pas s’exécuter. L'options « -d » est manquante.\n";
-			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
+			cerr << "Ce programme ne peut pas s’exécuter. L'options « -d » est manquante.\n";
+			cerr << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 		}
 		else if (rFlg == 0)
 		{
-			cout << "Ce programme ne peut pas s’exécuter. L'options « -r » est manquante.\n";
-			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;		
+			cerr << "Ce programme ne peut pas s’exécuter. L'options « -r » est manquante.\n";
+			cerr << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;		
 		}
 		else if (error != 0)
-			cout << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
+			cerr << "tp1.exe -d rese2014partis.csv (obligatoire) -r rese2014sommaire.csv (obligatoire) -s fichierdesortie (optionnelle)" << endl;
 			
 		if (dFlg == 1 && rFlg == 1)
 		{ 	
-/*			cout << "dFlg = " << dFlg << ", rFlg = " << rFlg << ", sFlg = " << sFlg << endl;
-			cout << endl;*/
 			goodOpt = true;
 		}
 	}
@@ -114,7 +112,10 @@ public:
 	{
 		return sVal;
 	}
-	
+	int getsFlg()
+	{
+		return sFlg;
+	}
 	int getError()
 	{
 		return error;

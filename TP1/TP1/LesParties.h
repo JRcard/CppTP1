@@ -27,35 +27,29 @@ public:
 	
 	friend ostream& operator << (ostream&, const LesParties&);
 	
-	void affiche()
+	void enTete()
 	{
-		cout.setf(ios::fixed);
-		cout.setf(ios::showpoint);
-	
-		cout << "No" << setw(8) << "Nom" << setw(69) << 
-			"Abreviation" << setw(22) <<
-			"NbreVotes" << setw(17) << 
-			"TauxdeVote" << setw(18) << 
-			"NbreCandidats" << setw(20) <<
-			"NbreCandidatselus" << setw(20) << endl;
+		cout << setw(2) << left << "No" << "\t" <<
+			setw(60) << left << "Nom" << "\t" <<
+			setw(20) << left << "Abreviation" << "\t" <<
+			setw(10) << right << "NbreVotes" << "\t" << 
+			setw(12) << right << "TauxdeVote" << "\t" << 
+			setw(15) << "NbreCandidats" << "\t" <<
+			setw(20) << "NbreCandidatselus" << "\t" << endl;
 		cout << setw(165) << setfill('-') << '-' << endl;
-
+		cout << setfill(' ');
 	}
 };
 
 ostream& operator << (ostream& sortie, const LesParties &parties)
 {
-	sortie.setf(ios::fixed);
-	sortie.setf(ios::showpoint);
-	
-/*	sortie << "No" << setw(8) << "Nom" << setw(69) << 
-			"Abreviation" << setw(22) <<
-			"NbreVotes" << setw(17) << 
-			"TauxdeVote" << setw(18) << 
-			"NbreCandidats" << setw(20) <<
-			"NbreCandidatselus" << setw(20) << endl;
-	sortie << setw(165) << setfill('-') << '-' << endl;*/
-	sortie << setw(2) << left << parties.no << setw(60) << left << parties.nom << endl;
+	sortie << setw(2) << right << parties.no << "\t" << 
+			  setw(60) << left << parties.nom << "\t" << 
+			  setw(20) << left << parties.abrv << "\t" <<
+			  setw(10) << right << parties.nbVote << "\t" <<
+			  setw(12) << right << parties.tauxVote << "\t" <<
+			  setw(15) << right << parties.nbCandi << "\t" <<
+			  setw(20) << right << parties.nbElu << "\t" <<  endl;
 	
 	return sortie;
 }

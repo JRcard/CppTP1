@@ -1,10 +1,3 @@
-#include <cstdio>
-#include <cstdlib>
-#include <fstream>
-#include <sstream>
-#include <getopt.h>
-#include <iomanip>
-#include <string>
 #include "MesOptions.h"
 #include "MesFichiers.h"
 #include "MonMenu.h"
@@ -12,108 +5,78 @@
 
 using namespace std;
 
-bool ok(string indiv, string global)
-{	
-	int error = 0;
-	ifstream fIndiv (indiv);
-	ifstream fGlobal (global);
-	
-	if  (!fIndiv.is_open())
-	{
-		cerr << "Erreur lors de la lecture du fichier : " << indiv << endl;
-		error++;
-	}
-	if (!fGlobal.is_open())
-	{
-		cerr << "Erreur lors de la lecture du fichier : " << global << endl;
-		error++;
-	}
-
-	if (error > 0) return false;
-	else return true;
-	
-	fIndiv.close();
-	fGlobal.close();
-}
-	
-void lireRemplir(const string& fichier, LesParties parties[], int & n)
-{   
-	string nbVote, nbCandi, nbElu;
-	string tauxVote;
-	string no, nom, abrv;
-	string lu;
-	
-	//istringstream aLire (fichier);
-	
-	ifstream  aLire (fichier, ios::in); // localiser et ouvrir pour la lecture
-	
-	n = 0;
-// test 1
-/*	while (aLire >> no >> nom >> abrv >> nbVote >> tauxVote >> nbCandi >> nbElu)     
-	{ 
-		parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu); 
-	}*/
-	
-// fin du test 1
-
-	
-// test 2
-	while (!aLire.eof())
-	{
-		getline(aLire, no, ',');
-		getline(aLire, nom, ',');
-		getline(aLire, abrv, ',');
-		getline(aLire, nbVote, ',');
-		getline(aLire, tauxVote, ',');
-		getline(aLire, nbCandi, ',');
-		getline(aLire, nbElu, '\n');
-		
-
-		if(n == 0)
-		{
-			n++;
-		}
-		else 
-		{
-			//cout << n++ << " TEST!!! " << "NO: " << no << " Nom: "<< nom << endl;
-			parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu); 
-		}
-		//parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu);  
-	}
-	// fin du test 2.
-	aLire.close();   
-}
-
 int main(int argc, char* argv[])
 {
 	const int MAX_PARTIES = 25 ;
 	int nbPartie;
-	MonMenu menu;
+	int nbGlobal;
+	
 	MesOptions options;
 	MesFichiers fichiers;
+	MonMenu menu;
 	LesParties partie[MAX_PARTIES];
+	Global global[MAX_PARTIES];
 
+// récupère les options, les vérifies et affiche les message d'erreurs.
 	options.setOpt(argc, argv);
-	cout << "erreur d'option: " << options.getError() << endl;
 
+// on récupère le statut de la class option. Si il n'y a pas d'erreur, le programme peut conituner.
 	if (options.getStatus())
 	{
-		/*fichiers(options.getdFlg(), options.getrFlg());*/
-
-		if (ok(options.getdVal(), options.getrVal()))
+		
+// il y a une vérification de la validité des fichiers passés en argument du programme. 
+// si il n'y a pas d'erreur le programme continue. Sinon "fichiers" affiche les messages d'erreur.
+		if (fichiers.ok(options.getdVal(), options.getrVal()))
 		{
-			// lire fichier et remplir tab de partie
-			lireRemplir(options.getdVal(), partie, nbPartie);
-			// lire fichier global et attendre l'appel
-			cout << menu;
-			//menu.menuOpt();
-			cout << "Nb de partie: " << nbPartie << endl;
+			// lire fichier et remplir un tableau de partie
+			fichiers.lireParties(options.getdVal(), partie, nbPartie);
+			// lire fichier global et rempli un tableau des résultats globals.
+			fichiers.lireGlobal(options.getrVal(), global, nbGlobal);
+			
+			// si l'option 's' est présente, les streams de sortie seront dirigés vers le fichier nommé par l'utilisateur.
+			// sinon l'affichage se fera de façon standard.
+			if(options.getsFlg() == 1)
+			{
+/*				fichiers.sortie(options.getsVal());*/
+				cout << "opt en construction!!" << endl;
+			}
+			else
+			{
+				cout << menu;
+				while ((option = cin.get()) != EOF) 
+				{
+					switch (option)
+					{
+						case '1':
+							menu.opt1();
+							break;
+						case '2':
+							menu.opt2();
+							break;
+						case '3':
+							menu.opt3();
+							break;
+						case '4':
+							menu.opt4();
+							break;
+						case '5':
+							menu.opt5();
+							break;
+						case '6':
+							menu.opt6();
+							break;
+						default:
+							cerr << option << " est une option incorrecte. Recommencez\n";
+					}
+				}
+			}
+	/*
+			partie[0].enTete();
 			cout << partie[2];
 			cout << partie[3];
+			for (int i = 0; i < nbGlobal; i++)
+				cout << global[i];*/
 		}
-		
-		else cout << "erreur de fichier: " << fichiers.getError() << endl;
 	}
-
 	return 0;
 }

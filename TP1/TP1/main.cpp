@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 				cout.rdbuf(streamBufferFile);
 				cout << "opt en construction!!" << endl;
 			}
-			int p=100;
+			int p=100; // sert a rien!!
 			cout << menu;
 			while (option != '6') 
 			{	
@@ -63,6 +63,7 @@ int main(int argc, char* argv[])
 						menu.opt3(partie, nbPartie);
 						break;
 					case '4':
+					// marche pas!!
 						menu.opt4(partie, nbPartie);
 						while(p == 100)
 						{

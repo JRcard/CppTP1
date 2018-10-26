@@ -10,6 +10,7 @@
 
 using namespace std;
 
+/* Cette class gère les arguments passés lors de l'exécution du programe.*/
 class MesOptions
 {
 private:
@@ -25,7 +26,7 @@ private:
 	
 public:
 	MesOptions(){};
-	
+	/* fonction membre qui valide la présence des arguments et receuille l'information.*/
 	void setOpt(int argc, char* argv[])
 	{
 		if (argc == 1)
@@ -60,10 +61,14 @@ public:
 				}
 			}
 		}
-		
+		// envois les données receuillies dans la fonction memebre optCheck() pour vérification.
 		optCheck(dFlg, rFlg, sFlg, error);
 	}
 	
+	/* Cette fonction membre test les valeurs receuillis avec la fonction setOpt() 
+	 * envois les messages d'erreur, si il y en a, dans le flux d'erreur 
+	 * et fait en sorte que "goodOpt" retourne true ou false.*/
+	 
 	void optCheck(int dFlg, int rFlg, int  sFlg, int error)
 	{
 		if (dFlg == 0 && rFlg == 0)
@@ -92,40 +97,32 @@ public:
 	}
 
 	
-/* getters */
+/* getters 
+ * Permet la véréfication dans le main que tout les option obligatoire y sont. 
+ * Permettant ainsi la poursuite du programme.*/
+
 	bool getStatus()
 	{
 		return goodOpt;
 	}
-		
+	// retourne le nom du fichier
 	string getdVal()
 	{
 		return dVal;
 	}
-		
 	string getrVal()
 	{
 		return rVal;
 	}
-	
 	string getsVal()
 	{
 		return sVal;
 	}
+	// retourne le flag pour tester si le fichier de sortie est demandé.
 	int getsFlg()
 	{
 		return sFlg;
 	}
-	int getError()
-	{
-		return error;
-	}
-	
-	~MesOptions()
-	{ cout << "deleted\n"; }
-
 };
-
-
 
 #endif // MESOPTIONS_H

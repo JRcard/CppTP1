@@ -4,10 +4,12 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include "LesParties.h"
+#include "LesPartis.h"
 
 using namespace std;
 
+/* class permettant de créer un tableau avec les données inscrites dans le fichier rese2014sommaire.csv
+   facilitant l'affichage par la suite. */
 class Global
 {
 	string total, nb, pourcent;
@@ -24,14 +26,17 @@ class Global
 		
 		friend ostream& operator << (ostream&, const Global&);
 };
+// surcharge d'affichage de la class Global
 ostream& operator << (ostream& sortie, const Global& s)
 {
-	sortie << left << s.total << ":" << 
-			  setw(45) << left << s.nb << endl;
+	sortie << left << s.total << ":" <<
+			right << s.nb;
 	
 	return sortie;
 }
 
+/* L'ouverture, la vérification et la lecture des fichiers passés en argument du programme principal
+   se fait par cette class.*/
 class MesFichiers
 {	
 	
@@ -41,6 +46,10 @@ class MesFichiers
 public:
 	MesFichiers(){};
 
+/* cette fonction membre vérifie la validité des fichiers à lire.
+   elle affiche les messages d'erreur en plus de retourner un bool
+   permettant au programme soit de continuer l'execution ou de fermer. */
+   
 	bool ok(string indiv, string global)
 	{	
 
@@ -57,14 +66,16 @@ public:
 			cerr << "Erreur lors de la lecture du fichier : " << global << endl;
 			error++;
 		}
-
-		if (error > 0) return false;
-		else return true;
 		
 		fIndiv.close();
 		fGlobal.close();
+		
+		if (error > 0) return false;
+		else return true;
+
 	}
-	
+	/* lis le fichier des résultat sommaire et remplis un tableau de "Global" 
+	 * permettant son affichageé*/
 	void lireGlobal(const string& fichier, Global tab[], int& n)
 	{
 		string total, nb, pourcent;
@@ -79,10 +90,10 @@ public:
 			getline(fGlobal, pourcent, '%');
 			tab[n++] = Global(total, nb, pourcent);
 		}
-		
+		fGlobal.close();
 	}
-// lis le fichier des résultats pour chaque partie et remplis un tableau de partie.
-	void lireParties(const string& fichier, LesParties parties[], int & n)
+	/*lis le fichier des résultats pour chaque partie et remplis un tableau de partie.*/
+	void lirePartis(const string& fichier, LesPartis partis[], int & n)
 	{   
 		string nbVote, nbCandi, nbElu;
 		string tauxVote;
@@ -108,28 +119,11 @@ public:
 			}
 			else 
 			{
-				parties[n++] = LesParties(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu); 
+				partis[n++] = LesPartis(no, nom, abrv, nbVote, tauxVote, nbCandi, nbElu); 
 			}
 		}
 		fIndiv.close();   
 	}
-// crée et ouvre un fichier de sortie selon le nom donné par l'utilisateur et sert pour la sortie des informations.
-/*	void sortie(const string& fichier)
-	{
-		ofstream out(fichier);
-		if(!fichier.is_open())
-			cerr << "Erreur lors de l’ouverture/écriture dans le fichier " << fichier << endl;
-	}
-	
-	int getError()
-	{
-		return error;
-	}
-
-	void affiche(char sel)
-	{
-		cout << "Individuel\n";
-	}*/
 };
 
 

@@ -1,4 +1,3 @@
-opt en construction!!
 Faites un choix: 
 (1) afficher le sommaire des résultats.
 (2) afficher tous les résultats.
@@ -9,14 +8,10 @@ Faites un choix:
 
 Opt -1- selectionnée.
 
-Total des bulletins valides:4 232 262                                    
-
-Total des bulletins rejetés:62 793                                       
-
-Total du vote exercé:4 295 055                                    
-
-Total des électeurs inscrits:6 012 440                                    
-
+Total des bulletins valides:4 232 262 
+Total des bulletins rejetés:62 793 
+Total du vote exercé:4 295 055 
+Total des électeurs inscrits:6 012 440
 Opt -2- selectionnée.
 
 No	Nom                                                         	Abreviation         	 NbreVotes	  TauxdeVote	  NbreCandidats	   NbreCandidatselus	
@@ -72,16 +67,7 @@ Sélectionner un partie parmi la liste suivante:
 
 No	Nom                                                         	Abreviation         	 NbreVotes	  TauxdeVote	  NbreCandidats	   NbreCandidatselus	
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 7	Parti marxiste-léniniste du Québec                        	P.M.L.Q.            	      2016	        0.05	             24	                   0	
-Opt -5- selectionnée.
-
-No	Nom                                                         	Abreviation         	 NbreVotes	  TauxdeVote	  NbreCandidats	   NbreCandidatselus	
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 6	Parti libéral du Québec/Quebec Liberal Party              	P.L.Q./Q.L.P.       	   1757071	       41.52	            125	                  70	
- 8	Parti québécois                                           	P.Q.                	   1074120	       25.38	            124	                  30	
-27	Coalition avenir Québec - L'équipe François Legault      	C.A.Q.-É.F.L.      	    975607	       23.05	            122	                  22	
-11	Québec solidaire                                           	Q.S.                	    323124	        7.63	            124	                   3	
-
+22	Équipe Adrien Pouliot - Parti conservateur du Québec      	É.A.P. - P.C.Q.    	     16429	        0.39	             59	                   0	
 Opt -6- selectionnée.
 Merci d'avoir utilisé ce programme, à la prochaine!
 

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <algorithm>
 #include "LesPartis.h"
 
 using namespace std;
@@ -17,6 +18,10 @@ class Global
 	public:
 		Global(){};
 		
+		/* constructeur avec les champs nécessaire à l'affichage.
+		 * le paramètre pourcent est initialisé a "null" 
+		 * puisqu'il n'y a pas de pourcentage à toutes les lignes du tableau dans le fichier source.*/
+		 
 		Global(string total, string nb, string pourcent = "Null")
 		{
 			this->total = total;
@@ -25,12 +30,13 @@ class Global
 		}
 		
 		friend ostream& operator << (ostream&, const Global&);
+
 };
 // surcharge d'affichage de la class Global
 ostream& operator << (ostream& sortie, const Global& s)
 {
-	sortie << left << s.total << ":" <<
-			right << s.nb;
+	sortie << left << setw(30) << s.total + ":" << "\t" 
+		   << right << setw(10) << s.nb;
 	
 	return sortie;
 }
@@ -74,8 +80,8 @@ public:
 		else return true;
 
 	}
-	/* lis le fichier des résultat sommaire et remplis un tableau de "Global" 
-	 * permettant son affichageé*/
+	/* lis le fichier des résultats sommaires et remplis un tableau de "Global" 
+	 * permettant son affichage */
 	void lireGlobal(const string& fichier, Global tab[], int& n)
 	{
 		string total, nb, pourcent;
@@ -88,11 +94,12 @@ public:
 			getline(fGlobal, total, ',');
 			getline(fGlobal, nb, ',');
 			getline(fGlobal, pourcent, '%');
+			nb.erase(remove(nb.begin(), nb.end(), ' '), nb.end());
 			tab[n++] = Global(total, nb, pourcent);
 		}
 		fGlobal.close();
 	}
-	/*lis le fichier des résultats pour chaque partie et remplis un tableau de partie.*/
+	/*lis le fichier des résultats pour chaque parti et remplis un tableau de partie.*/
 	void lirePartis(const string& fichier, LesPartis partis[], int & n)
 	{   
 		string nbVote, nbCandi, nbElu;

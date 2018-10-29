@@ -1,0 +1,117 @@
+(1) afficher le sommaire des résultats.
+(2) afficher tous les résultats.
+(3) afficher les résultats détaillés du parti qui a gagné plus de sièges à l’assemblée.
+(4) afficher les résultats détaillés d’un parti politique en particulier.
+(5) afficher les résultats des parties qui ont obtenu au moins un siège à l’assemblée.
+(6) quitter le programme.
+
+option -1- a été sélectionnée
+
+Total des bulletins valides:	   4232262
+Total des bulletins rejetés:	     62793
+Total du vote exercé:		   4295055
+Total des électeurs inscrits:	   6012440
+
+option -2- a été sélectionnée
+
+
+No	Nom                                                         	Abreviation         	 Nbrevotes	  Tauxdevote	  Nbrecandidats	   Nbrecandidatselus
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 6	Parti libéral du Québec/Quebec Liberal Party              	P.L.Q./Q.L.P.       	   1757071	       41.52	            125	                  70
+ 8	Parti québécois                                           	P.Q.                	   1074120	       25.38	            124	                  30
+27	Coalition avenir Québec - L'équipe François Legault      	C.A.Q.-É.F.L.      	    975607	       23.05	            122	                  22
+11	Québec solidaire                                           	Q.S.                	    323124	        7.63	            124	                   3
+26	Option nationale - Pour l'indépendance du Québec          	O.N. - P.I.Q.       	     30697	        0.73	            116	                   0
+10	Parti vert du Québec/Green Party of Québec                	P.V.Q./G.P.Q.       	     23163	        0.55	             44	                   0
+22	Équipe Adrien Pouliot - Parti conservateur du Québec      	É.A.P. - P.C.Q.    	     16429	        0.39	             59	                   0
+ 0	Candidats indépendants/Independent candidates              	Ind.                	     15361	        0.36	             11	                   0
+23	Parti nul                                                   	P.N.                	      7539	        0.18	             24	                   0
+ 2	Bloc pot                                                    	B.P.                	      2690	        0.06	             14	                   0
+ 7	Parti marxiste-léniniste du Québec                        	P.M.L.Q.            	      2016	        0.05	             24	                   0
+28	Parti équitable                                            	P.Éq.              	      1645	        0.04	              5	                   0
+31	Parti des sans parti                                        	P.S.P.              	      1291	        0.03	              5	                   0
+33	Mon pays le Québec                                         	M.P.Q.              	       521	        0.01	              6	                   0
+29	Équipe autonomiste                                         	É.A.               	       400	        0.01	              5	                   0
+ 4	Parti unité nationale                                      	P.U.N.              	       241	        0.01	              3	                   0
+25	Québec - Révolution démocratique                         	Q.R.D.              	       163	        0.00	              1	                   0
+16	Parti indépendantiste                                      	P.I.                	       126	        0.00	              1	                   0
+32	Union citoyenne du Québec / Québec Citizens' Union        	U.C.Q./Q.C.U.       	        58	        0.00	              1	                   0
+
+option -3- a été sélectionnée
+
+
+
+No	Nom                                                         	Abreviation         	 Nbrevotes	  Tauxdevote	  Nbrecandidats	   Nbrecandidatselus
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 6	Parti libéral du Québec/Quebec Liberal Party              	P.L.Q./Q.L.P.       	   1757071	       41.52	            125	                  70
+
+option -4- a été sélectionnée
+
+Sélectionner un parti parmi la liste suivante:
+( 0) Parti libéral du Québec/Quebec Liberal Party
+( 1) Parti québécois
+( 2) Coalition avenir Québec - L'équipe François Legault
+( 3) Québec solidaire
+( 4) Option nationale - Pour l'indépendance du Québec
+( 5) Parti vert du Québec/Green Party of Québec
+( 6) Équipe Adrien Pouliot - Parti conservateur du Québec
+( 7) Candidats indépendants/Independent candidates
+( 8) Parti nul
+( 9) Bloc pot
+(10) Parti marxiste-léniniste du Québec
+(11) Parti équitable
+(12) Parti des sans parti
+(13) Mon pays le Québec
+(14) Équipe autonomiste
+(15) Parti unité nationale
+(16) Québec - Révolution démocratique
+(17) Parti indépendantiste
+(18) Union citoyenne du Québec / Québec Citizens' Union
+
+
+No	Nom                                                         	Abreviation         	 Nbrevotes	  Tauxdevote	  Nbrecandidats	   Nbrecandidatselus
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2	Bloc pot                                                    	B.P.                	      2690	        0.06	             14	                   0
+
+option -4- a été sélectionnée
+
+Sélectionner un parti parmi la liste suivante:
+( 0) Parti libéral du Québec/Quebec Liberal Party
+( 1) Parti québécois
+( 2) Coalition avenir Québec - L'équipe François Legault
+( 3) Québec solidaire
+( 4) Option nationale - Pour l'indépendance du Québec
+( 5) Parti vert du Québec/Green Party of Québec
+( 6) Équipe Adrien Pouliot - Parti conservateur du Québec
+( 7) Candidats indépendants/Independent candidates
+( 8) Parti nul
+( 9) Bloc pot
+(10) Parti marxiste-léniniste du Québec
+(11) Parti équitable
+(12) Parti des sans parti
+(13) Mon pays le Québec
+(14) Équipe autonomiste
+(15) Parti unité nationale
+(16) Québec - Révolution démocratique
+(17) Parti indépendantiste
+(18) Union citoyenne du Québec / Québec Citizens' Union
+
+
+No	Nom                                                         	Abreviation         	 Nbrevotes	  Tauxdevote	  Nbrecandidats	   Nbrecandidatselus
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10	Parti vert du Québec/Green Party of Québec                	P.V.Q./G.P.Q.       	     23163	        0.55	             44	                   0
+
+option -5- a été sélectionnée
+
+
+
+No	Nom                                                         	Abreviation         	 Nbrevotes	  Tauxdevote	  Nbrecandidats	   Nbrecandidatselus
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 6	Parti libéral du Québec/Quebec Liberal Party              	P.L.Q./Q.L.P.       	   1757071	       41.52	            125	                  70
+ 8	Parti québécois                                           	P.Q.                	   1074120	       25.38	            124	                  30
+27	Coalition avenir Québec - L'équipe François Legault      	C.A.Q.-É.F.L.      	    975607	       23.05	            122	                  22
+11	Québec solidaire                                           	Q.S.                	    323124	        7.63	            124	                   3
+
+option -6- a été sélectionnée
+
+Merci d'avoir utilisé ce programme, à la prochaine!

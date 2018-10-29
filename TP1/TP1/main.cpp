@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 						cerr << option << " est une option incorrecte. Recommencez\n";
 				}
 			}
-			cout << "Opt -6- selectionnée.\nMerci d'avoir utilisé ce programme, à la prochaine!\n" << endl;
+			cout << "option -6- a été sélectionnée\n\nMerci d'avoir utilisé ce programme, à la prochaine!" << endl;
 		}
 	}
 	// si l'utilisateur a demandé un fichier de sortie, il sera fermé avant la fin du programme.

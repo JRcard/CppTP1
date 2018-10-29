@@ -9,6 +9,7 @@ using namespace std;
 /* classe permettant de gérer les partis politiques lus dans le fichier. 
    elle permet l'affichage de l'entête et des partis appelés
    Cette class retourne certains arguments utilent pour les fonctions membres de MonMenu.h*/
+   
 class LesPartis
 {
 	string no, nbVote, nbCandi, nbElu;
@@ -17,7 +18,7 @@ class LesPartis
 	
 public:
 	LesPartis(){};
-	
+	// constructeur avec les différents champs nécesaire pour l'affichage 
 	LesPartis(string no, string nom, string abrv, string nbVote, string tauxVote, string nbCandi, string nbElu)
 	{
 		this->no = no;
@@ -37,11 +38,11 @@ public:
 		cout << setw(2) << left << "No" << "\t" <<
 			setw(60) << left << "Nom" << "\t" <<
 			setw(20) << left << "Abreviation" << "\t" <<
-			setw(10) << right << "NbreVotes" << "\t" << 
-			setw(12) << right << "TauxdeVote" << "\t" << 
-			setw(15) << "NbreCandidats" << "\t" <<
-			setw(20) << "NbreCandidatselus" << "\t" << endl;
-		cout << setw(165) << setfill('-') << '-' << endl;
+			setw(10) << right << "Nbrevotes" << "\t" << 
+			setw(12) << right << "Tauxdevote" << "\t" << 
+			setw(15) << "Nbrecandidats" << "\t" <<
+			setw(20) << "Nbrecandidatselus" << "\t" << endl;
+		cout << setw(164) <<  setfill('-') << "-" << endl;
 		cout << setfill(' ');
 	}
 	/* getters */
